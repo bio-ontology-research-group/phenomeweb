@@ -1,0 +1,14 @@
+phenomeweb/static/bower/
+phenomeweb/public/
+phenomeweb/media/
+venv/
+*.pyc
+*.mo
+*.log
+.idea/
+npm-debug.log
+node_modules/
+./uwsgi.ini
+celerybeat-schedule
+celery
+*.pid
