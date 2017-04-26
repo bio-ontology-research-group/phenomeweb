@@ -18,10 +18,13 @@ from configurations import Configuration
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 def rel(*x):
     return os.path.join(os.path.abspath(os.path.dirname(__file__)), *x)
 
+
 sys.path.insert(0, rel('apps'))
+
 
 class BaseConfiguration(Configuration):
     # Quick-start development settings - unsuitable for production
@@ -98,6 +101,24 @@ class BaseConfiguration(Configuration):
         }
     }
 
+    # Memcached
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+            'LOCATION': '127.0.0.1:11211',
+        }
+    }
+
+    STATICFILES_DIRS = (
+        rel('static'),)
+
+    AUTHENTICATION_BACKENDS = (
+        # Needed to login by username in Django admin, regardless of `allauth`
+        'django.contrib.auth.backends.ModelBackend',
+
+        # `allauth` specific authentication methods, such as login by e-mail
+        'allauth.account.auth_backends.AuthenticationBackend',
+    )
 
     # Password validation
     # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -136,6 +157,10 @@ class BaseConfiguration(Configuration):
     # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
     STATIC_URL = '/static/'
+    SITE_ID = 1
+
+    MEDIA_ROOT = 'media/'
+    MEDIA_URL = '/media/'
 
 
 class Development(BaseConfiguration):
