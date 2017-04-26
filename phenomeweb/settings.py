@@ -160,7 +160,7 @@ class BaseConfiguration(Configuration):
     STATIC_URL = '/static/'
     SITE_ID = 1
 
-    MEDIA_ROOT = 'media/'
+    MEDIA_ROOT = 'phenomeweb/media/'
     MEDIA_URL = '/media/'
 
 
