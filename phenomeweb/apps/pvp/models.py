@@ -5,12 +5,16 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.postgres.fields import ArrayField
 from pvp.constants import PENDING, INHERITANCE_MODE_CHOICES
+from django.core.validators import FileExtensionValidator
 
 
 class Disease(models.Model):
     did = models.CharField(max_length=15, unique=True)
     name = models.CharField(max_length=127, null=True, blank=True)
     phenotypes = ArrayField(models.CharField(max_length=15))
+
+
+vcf_extension_validator = FileExtensionValidator(allowed_extensions=['vcf'])
 
 
 class Query(models.Model):
@@ -21,6 +25,7 @@ class Query(models.Model):
         Disease, related_name='queries', null=True, blank=True)
     inheritance_mode = models.CharField(
         max_length=31, choices=INHERITANCE_MODE_CHOICES)
-    vcf_file = models.FileField(upload_to='pvp/%Y/%m/%d/')
+    vcf_file = models.FileField(
+        upload_to='pvp/%Y/%m/%d/', validators=[vcf_extension_validator, ])
     status = models.CharField(max_length=31, default=PENDING)
     date_created = models.DateTimeField(default=timezone.now)

@@ -1,4 +1,20 @@
 {% extends "pvp/base.html" %}
+{% load widget_tweaks %}
+
 {% block content %}
-{{ form }}
+<div class="pvp-header">
+  <h1 class="pvp-title">PhenomeNet Variant Prioritizer</h1>
+  <p class="lead pvp-description">Submit your vcf file and get the ranked variants</p>
+</div>
+<form class="form" action="." method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {% for field in form %}
+    <div class="form-group">
+      {{ field.label_tag }}
+      {{ field|add_class:"form-control" }}
+      {{ field.errors }}
+    </div>
+  {% endfor %}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 {% endblock %}

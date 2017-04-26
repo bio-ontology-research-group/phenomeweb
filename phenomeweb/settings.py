@@ -55,6 +55,7 @@ class BaseConfiguration(Configuration):
         'allauth.account',
         'allauth.socialaccount',
         'rest_framework',
+        'widget_tweaks',
     ]
 
     MIDDLEWARE = [

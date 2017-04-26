@@ -7,15 +7,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
     <title>{% block head_title %}{% trans "PVP" %}{% endblock %}</title>
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap core CSS -->
     <link href="{% static "bower/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
 
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static "bower/bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet" %}">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/app.css" %}" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     {% block head %}{% endblock %}
@@ -23,32 +33,11 @@
   <body>
   {% block body %}
   {% include "navigation.html" %}
-  <div class="container-fluid">
+  <div class="container">
       <div class="row">
-        {% block sidebar %}
-          <div class="col-sm-3 col-md-2 sidebar">
-          {% include "sidebar.html" %}
-          </div>
-        {% endblock %}
-        {% block main %}
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <div class="row">
-            <div class="col-md-12">
-              {% if messages %}
-                <ul class="list-group">
-                  {% for message in messages %}
-                  <li{% if message.tags %} class="list-group-item {{ message.tags }}"{% endif %}>
-                      {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
-                      {{ message }}
-                  </li>
-                  {% endfor %}
-                </ul>
-              {% endif %}
-            </div>
-          </div>
+        <div class="col-sm-8 pvp-main">
           {% block content %}{% endblock %}
         </div>
-        {% endblock %}
       </div>
     </div>
     {% endblock %}

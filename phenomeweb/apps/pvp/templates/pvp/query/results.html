@@ -1,1 +1,12 @@
 {% extends "pvp/base.html" %}
+
+{% block content %}
+<div class="pvp-header">
+  <h1 class="pvp-title">PhenomeNet Variant Prioritizer</h1>
+  <p class="lead pvp-description">Please wait until your file will be processed</p>
+</div>
+<p>Status: {{ object.status }}</p>
+{% if object.status == "Pending" %}
+    <a class="btn btn-primary" href="{{ object.vcf_file.url }}.res">Download result</a>
+{% endif %}
+{% endblock %}
