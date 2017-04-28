@@ -1,11 +1,13 @@
 {% load i18n %}
+{% load static from staticfiles %}
 <div class="pvp-masthead">
   <div class="container">
     <nav class="pvp-nav">
-      <a class="pvp-nav-item active" href="#">{% trans "Home" %}</a>
-      <a class="pvp-nav-item" href="#">{% trans "New features" %}</a>
-      <a class="pvp-nav-item" href="#">{% trans "Press" %}</a>
-      <a class="pvp-nav-item" href="#">{% trans "About" %}</a>
+      <a class="pvp-nav-item" href="/"><img src="{% static "images/logo_small.jpg" %}"/></a>
+      <a class="pvp-nav-item {% if section == "home" %}active{% endif %}" href="/">{% trans "Home" %}</a>
+      <a class="pvp-nav-item {% if section == "pvp" %}active{% endif %}" href="{% url "create-query" %}">{% trans "Submit" %}</a>
+      <a class="pvp-nav-item {% if section == "download" %}active{% endif %}" href="#">{% trans "Download" %}</a>
+      <a class="pvp-nav-item {% if section == "about" %}active{% endif %}" href="#">{% trans "About" %}</a>
     </nav>
   </div>
 </div>

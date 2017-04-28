@@ -36,7 +36,7 @@ h6, .h6 {
  */
 
 .pvp-masthead {
-  background-color: #428bca;
+  background-color: #d2e7c6;
   -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
           box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
 }
@@ -47,17 +47,17 @@ h6, .h6 {
   display: inline-block;
   padding: 10px;
   font-weight: 500;
-  color: #cdddeb;
+  color: #808080;
 }
 .pvp-nav-item:hover,
 .pvp-nav-item:focus {
-  color: #fff;
+  color: #000;
   text-decoration: none;
 }
 
 /* Active state gets a caret at the bottom */
 .pvp-nav .active {
-  color: #fff;
+  color: #000;
 }
 .pvp-nav .active:after {
   position: absolute;
