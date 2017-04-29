@@ -7,6 +7,17 @@
 </div>
 <p>Status: {{ object.status }}</p>
 {% if object.status == "Finished" %}
-    <a class="btn btn-primary" href="{{ object.vcf_file.url }}.res">Download result</a>
+  <a class="btn btn-primary" href="{{ object.vcf_file.url }}.res">Download result</a>
+  <table class="table table-stripped">
+    <tbody>
+      {% for res in results %}
+        <tr>
+          {% for r in res %}
+            <td>{{ r }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endif %}
 {% endblock %}
